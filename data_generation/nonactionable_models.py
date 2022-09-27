@@ -12,7 +12,7 @@ class MetPoint(NonActionablePoint):
             f"had a nice chat with {pronoun}",
             f"had a good catchup with {pronoun}"
         ])
-        MetPoint(
+        return MetPoint(
             email_point=point
         )
 
