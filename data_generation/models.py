@@ -15,7 +15,7 @@ class BasePoint(BaseModel):
 
 
 class BookMeetingPoint(BasePoint):
-    is_actionable = True
+    is_actionable: bool = True
 
     def get_point(self) -> str:
         action = random.choice(["Schedule", "Book", "Plan"])
