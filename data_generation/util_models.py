@@ -4,7 +4,12 @@ from pydantic import BaseModel
 
 
 class BasePoint(BaseModel):
-    email_point: str  # string that goes into generating the email
+    # string that goes into generating the email
+    # for actionable points, start with a verb instructing the recipient
+    # for nonactionable points, start with a verb instructing the language model
+    # keep first character lower case, for easier formatting
+    # see example in bloom_inference.py for more info
+    email_point: str
     is_actionable: bool
 
     @staticmethod
@@ -14,7 +19,8 @@ class BasePoint(BaseModel):
 
 
 class ActionablePoint(BaseModel):
-    summarized_point: str  # string that goes into the dataset (as the output)
+    # string that goes into the dataset (as the output)
+    summarized_point: str
     is_actionable: bool = True
 
     @staticmethod
