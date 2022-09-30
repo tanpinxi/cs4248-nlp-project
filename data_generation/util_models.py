@@ -4,11 +4,19 @@ from pydantic import BaseModel
 
 
 class BasePoint(BaseModel):
-    # string that goes into generating the email
-    # for actionable points, start with a verb instructing the recipient
-    # for nonactionable points, start with a verb instructing the language model
-    # keep first character lower case, for easier formatting
-    # see example in bloom_inference.py for more info
+    """
+    email_point is the string that goes into the language model to generate the email
+    randomize this as much as possible, either through random information, or random wording/phrasing
+
+    for all points, keep first character lower case, for easier formatting
+
+    for actionable points, start with a verb instructing the recipient.
+    during prompt constructions, a prefix "ask him/her to" will be added to all of these points
+
+    for nonactionable points, start with a verb instructing the language model what to write in the email
+
+    see example in bloom_inference.py for more info
+    """
     email_point: str
     is_actionable: bool
 
@@ -19,7 +27,10 @@ class BasePoint(BaseModel):
 
 
 class ActionablePoint(BaseModel):
-    # string that goes into the dataset (as the output)
+    """
+    summarized_point is the string that goes into the dataset (as the output)
+    do not randomize this, only add the same information that appeared in email_point
+    """
     summarized_point: str
     is_actionable: bool = True
 

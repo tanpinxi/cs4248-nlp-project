@@ -3,9 +3,10 @@ from huggingface_hub.inference_api import InferenceApi
 from data_generation.settings import BLOOM_API_KEY
 
 
-def get_bloom_output(prompt: str):
+def get_bloom_output(prompt: str) -> str:
     inference = InferenceApi(repo_id="bigscience/bloom", token=BLOOM_API_KEY)
-    return inference(prompt, params={"max_new_tokens": 150, "temperature": 0.6, "return_full_text": False})
+    res = inference(prompt, params={"max_new_tokens": 150, "temperature": 0.6, "return_full_text": False})
+    return res[0]["generated_text"].strip()
 
 
 if __name__ == "__main__":
