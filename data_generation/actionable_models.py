@@ -1,6 +1,6 @@
 import random
 
-from data_generation.random_generators import get_random_room, get_random_time, get_random_day, get_random_meeting_platform, get_random_document
+from data_generation.random_generators import get_random_room, get_random_time, get_random_day, get_random_meeting_platform, get_random_document, get_random_office_role
 from data_generation.util_models import ActionablePoint
 
 # Scheduling 
@@ -39,6 +39,21 @@ class BookOnlineMeetingPoint(ActionablePoint):
             summarized_point=summarized_point,
         )
 
+class PostponeMeetingPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "PostponeMeetingPoint":
+        action = random.choice(["postpone", "reschedule", "delay", "rearrange", "call off"])
+        platform = random.choice([f" {get_random_meeting_platform()}", ""])
+        day = random.choice([f"next {get_random_day()}",  f"this {get_random_day()}", "tomorrow"])
+        email_point = random.choice([
+            f"{action} the{platform} meeting scheduled for {day}",
+        ])
+        summarized_point = f"postpone the{platform} meeting scheduled for {day}"
+        return PostponeMeetingPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+
 # Attachments 
 class ReviewAttachmentPoint(ActionablePoint):
     @staticmethod
@@ -73,3 +88,20 @@ class CompleteAttachmentPoint(ActionablePoint):
             email_point=email_point,
             summarized_point=summarized_point,
         )
+
+class ForwardAttachmentPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ForwardAttachmentPoint":
+        pronoun = "his" if is_male else "her"
+        action = random.choice(["forward", "email", "send"])
+        role = get_random_office_role()
+        document = get_random_document()
+        email_point = random.choice([
+            f"{action} the {document} to {pronoun} {role}",
+        ])
+        summarized_point = f"forward the {document} to {pronoun} {role}"
+        return ForwardAttachmentPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+        
