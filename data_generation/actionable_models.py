@@ -1,6 +1,6 @@
 import random
 
-from data_generation.random_generators import get_random_room, get_random_time, get_random_day, get_random_meeting_platform
+from data_generation.random_generators import get_random_room, get_random_time, get_random_day, get_random_meeting_platform, get_random_document
 from data_generation.util_models import ActionablePoint
 
 # Scheduling 
@@ -35,6 +35,41 @@ class BookOnlineMeetingPoint(ActionablePoint):
         ])
         summarized_point = f"schedule an online meeting on {platform} at {time} for {day}"
         return BookOnlineMeetingPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+
+# Attachments 
+class ReviewAttachmentPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ReviewAttachmentPoint":
+        pronoun = "his" if is_male else "her"
+        action = random.choice(["review", "critique", "evaluate", "scrutinize", "examine", "take a look at"])
+        document = get_random_document()
+        day = random.choice([f"next {get_random_day()}",  f"this {get_random_day()}", "tomorrow"])
+        email_point = random.choice([
+            f"{action} the attached {document} by {day}",
+            f"{action} the enclosed {document} by {day}",
+            f"find the attached {document} for {pronoun} review by {day}",
+        ])
+        summarized_point = f"review the attached {document} by {day}"
+        return ReviewAttachmentPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+
+class CompleteAttachmentPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "CompleteAttachmentPoint":
+        action = random.choice(["fill in", "fill up", "complete", "finalize", "submit"])
+        day = random.choice([f"next {get_random_day()}",  f"this {get_random_day()}", "tomorrow"])
+        time = get_random_time()
+        email_point = random.choice([
+            f"{action} the attached form by {day} {time}",
+            f"{action} and reply with the enclosed form by {day} {time}",
+        ])
+        summarized_point = f"fill in the attached form by {day} {time}"
+        return CompleteAttachmentPoint(
             email_point=email_point,
             summarized_point=summarized_point,
         )
