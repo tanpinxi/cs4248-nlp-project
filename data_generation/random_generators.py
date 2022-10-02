@@ -53,3 +53,19 @@ def get_random_document():
         "draft",
     ])
     return f"{document}"
+
+def get_random_office_role():
+    role = random.choice([
+        "secretary",
+        "HR manager",
+        "team leader",
+        "supervisor",
+        "department head",
+        "group director",
+        "chairman",
+        "director",
+        "deputy CEO",
+        "CEO",
+        "client"
+    ])
+    return f"{role}"
