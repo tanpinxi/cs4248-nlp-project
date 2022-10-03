@@ -26,7 +26,7 @@ class BasePoint(BaseModel):
         ...
 
 
-class ActionablePoint(BaseModel):
+class ActionablePoint(BasePoint):
     """
     summarized_point is the string that goes into the dataset (as the output)
     do not randomize this, only add the same information that appeared in email_point
@@ -42,10 +42,10 @@ class ActionablePoint(BaseModel):
         ...
 
 
-class NonActionablePoint(BaseModel):
+class NonActionablePoint(BasePoint):
     is_actionable: bool = False
 
     @staticmethod
     @abstractmethod
-    def init_point(is_male: bool) -> "ActionablePoint":
+    def init_point(is_male: bool) -> "NonActionablePoint":
         ...
