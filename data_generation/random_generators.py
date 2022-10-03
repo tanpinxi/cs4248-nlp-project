@@ -1,14 +1,23 @@
 import random
+from typing import Optional
+
+import names
 
 def get_random_day():
-    day = random.choice([
+    return random.choice([
         "Monday",
+        "Mon",
         "Tuesday",
+        "Tue",
+        "Tues",
         "Wednesday",
+        "Wed",
         "Thursday",
+        "Thu",
+        "Thur",
         "Friday",
+        "Fri",
     ])
-    return f"{day}"
 
 def get_random_time():
     digit = random.randint(1, 12)
@@ -25,17 +34,20 @@ def get_random_room():
     return f"{room} {digit}"
 
 def get_random_meeting_platform():
-    platform = random.choice([
+    return random.choice([
         "Zoom",
         "Google Meet",
         "Skype",
         "Microsoft Teams",
         "Slack",
     ])
-    return f"{platform}"
+
+def get_random_first_name(is_male: Optional[bool] = None):
+    gender = None if is_male is None else "male" if is_male else "female"
+    return names.get_first_name(gender=gender)
 
 def get_random_document():
-    document = random.choice([
+    return random.choice([
         "legal contract",
         "contract",
         "financial report",
@@ -52,10 +64,9 @@ def get_random_document():
         "diagram",
         "draft",
     ])
-    return f"{document}"
 
 def get_random_office_role():
-    role = random.choice([
+    return random.choice([
         "secretary",
         "HR manager",
         "team leader",
@@ -68,4 +79,3 @@ def get_random_office_role():
         "CEO",
         "client"
     ])
-    return f"{role}"
