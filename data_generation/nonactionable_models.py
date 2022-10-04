@@ -1,6 +1,7 @@
 import random
 
 from data_generation.util_models import NonActionablePoint
+from random_generators import get_random_task, get_random_office_role
 
 
 class MetPoint(NonActionablePoint):
@@ -118,6 +119,47 @@ class PlanPoint(NonActionablePoint):
         return PlanPoint(
             email_point=point
         )
+class SoloIntroPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "SoloIntroPoint":
+        pronoun = "him" if is_male else "her"
+        pronoun_2 = "his" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} that you are a new hire and have recently joined {pronoun_2} team",
+            f"tell {pronoun} that you are looking forward to learning from {pronoun} and the rest of the team",
+            f"tell {pronoun} that you are looking forward to meeting the team members"
+            f"tell {pronoun} that you are hoping for a pleasant work experience with everyone"
+        ])
+        return SoloIntroPoint(
+            email_point=point
+        )
+
+class PositiveReviewPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "PositiveReviewPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} you admire the quality of their work in the recent {get_random_task()}",
+            f"tell {pronoun} to keep up the good work",
+            f"say that you look forward to working with {pronoun} in the future"
+        ])
+        return PositiveReviewPoint(
+            email_point=point
+        )
+
+class NegativeReviewPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativeReviewPoint":
+        pronoun = "him" if is_male else "her"
+        pronoun_2 = "his" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} that the recent {get_random_task()} done by {pronoun} was disappointing",
+            f"tell {pronoun} that {pronoun_2} performance reflects poorly on {pronoun_2} work standards",
+            f"say that you expect better result from {pronoun} in the future"
+        ])
+        return NegativeReviewPoint(
+            email_point=point
+        )
 
 
 class MailPoint(NonActionablePoint):
@@ -136,7 +178,7 @@ class MailPoint(NonActionablePoint):
             f"say you want {pronoun} to be contactable through email",
             f"say you emailed {pronoun} important documents",
             f"say you have too many email to scan through",
-            f"say you miss the email from {pronoun},
+            f"say you miss the email from {pronoun}",
             f"thank {pronoun} for reading your email",
             f"thank {pronoun} for emailing you the documents",
             f"thank {pronoun} for the quick respone to your email",
@@ -169,10 +211,51 @@ class SchoolPoint(NonActionablePoint):
             f"thank {pronoun} for provinding a great learning experience",
             f"thank {pronoun} for helping you in understanding the context",
             f"thank {pronoun} for studying with you",
-            f"scold {pronoun} for ignoring you while you had help {pronoun} before",
+            f"scold {pronoun} for ignoring you while you had helped {pronoun} before",
             f"scold {pronoun} for not studying and receive bad grade",
             f"scold {pronoun} for dropping out of school"
         ])
         return SchoolPoint(
+            email_point=point
+        )
+
+class ThankPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ThankPoint":
+        pronoun = "him" if is_male else "her"
+        pronoun_2 = "his" if is_male else "her"
+        pronoun_3 = "he" if is_male else "she"
+        point = random.choice([
+            f"thank {pronoun} for the help that {pronoun_3} provided in the recent {get_random_task()}",
+            f"tell {pronoun} that {pronoun_2} assistance is greatly appreciated",
+            f"tell {pronoun} to not hesitate to let you know if they need assistance in the future",
+            f"tell {pronoun} that you are greatful for the help",
+            f"thank {pronoun} for giving you the time of day",
+            f"thank {pronoun} for such a wonderful contribution to the recent {get_random_task()}",
+            f"thank {pronoun} putting a good word to the {get_random_office_role()}",
+            f"Show your gratitude to {pronoun} by offering your assistance to his current job",
+            f"thank {pronoun} for {pronoun_2} service",
+            f"thank {pronoun} for {pronoun_2} application to the role",
+            f"thank {pronoun} for reading the email and for {pronoun} to have a great day ahead"
+        ])
+        return ThankPoint(
+            email_point=point
+        )
+
+class ApologyPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ApologyPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} that you would like to apologise for the trouble caused",
+            f"tell {pronoun} that you are sorry for not performing your role up to par",
+            f"tell {pronoun} that you will not repeat the mistake again",
+            f"tell {pronoun} that you would like to apologize for the inconvenience caused",
+            f"tell {pronoun} that you are sorry for the trouble caused",
+            f"inform {pronoun} that you and your team are responsible for the issues caused, and would like to make things right",
+            f"tell {pronoun} that you are sorry for the poor-quality work",
+            f"tell {pronoun} that you are aware of the mistakes made, and would like to make amends"
+        ])
+        return ApologyPoint(
             email_point=point
         )
