@@ -20,7 +20,22 @@ all_actionable_points: List[Type[ActionablePoint]] = [
 ]
 
 all_nonactionable_points: List[Type[NonActionablePoint]] = [
-    MetPoint,
+    PositiveMetPoint,
+    NegativeMetPoint,
+    PositiveMeetPoint,
+    NegativeMeetPoint,
+    PositiveCallPoint,
+    NegativeCallPoint,
+    PositivePlanPoint,
+    NegativePlanPoint,
+    SoloIntroPoint,
+    PositiveReviewPoint,
+    NegativeReviewPoint,
+    PositiveMailPoint,
+    NegativeMailPoint,
+    SchoolPoint,
+    ThankPoint,
+    ApologyPoint       
 ]
 
 def generate_prompt_and_summary(

@@ -24,6 +24,9 @@ def get_random_time():
     am_pm = random.choice(["am", "pm"])
     return f"{digit} {am_pm}"
 
+def get_random_daytime():
+    return random.choice(["morning", "afternoon", "evening", "night"])
+
 def get_random_room():
     room = random.choice([
         "meeting room",
@@ -78,4 +81,24 @@ def get_random_office_role():
         "deputy CEO",
         "CEO",
         "client"
+    ])
+
+def get_random_non_office_venue():
+    return random.choice([
+        "restaurant", 
+        "store", 
+        "cafe", 
+        "theatre", 
+        "hotel",
+        "camp"
+    ])
+
+def get_random_task():
+    return random.choice([
+        "project",
+        "report",
+        "pitch",
+        "spreadsheet",
+        "presentation",
+        "negotiation"
     ])
