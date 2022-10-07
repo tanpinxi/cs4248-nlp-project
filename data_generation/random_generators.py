@@ -1,11 +1,28 @@
 import random
+from typing import Optional
 
+import names
+
+def get_random_day():
+    return random.choice([
+        "Monday",
+        "Mon",
+        "Tuesday",
+        "Tue",
+        "Tues",
+        "Wednesday",
+        "Wed",
+        "Thursday",
+        "Thu",
+        "Thur",
+        "Friday",
+        "Fri",
+    ])
 
 def get_random_time():
     digit = random.randint(1, 12)
     am_pm = random.choice(["am", "pm"])
     return f"{digit} {am_pm}"
-
 
 def get_random_room():
     room = random.choice([
@@ -62,7 +79,6 @@ def get_random_office_role():
         "CEO",
         "client"
     ])
-
 
 def get_random_non_office_venue():
     return random.choice([
