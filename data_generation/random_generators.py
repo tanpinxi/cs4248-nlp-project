@@ -24,6 +24,9 @@ def get_random_time():
     am_pm = random.choice(["am", "pm"])
     return f"{digit} {am_pm}"
 
+def get_random_daytime():
+    return random.choice(["morning", "afternoon", "evening", "night"])
+
 def get_random_room():
     room = random.choice([
         "meeting room",

@@ -1,100 +1,126 @@
 import random
 
 from data_generation.util_models import NonActionablePoint
-from random_generators import get_random_task, get_random_office_role
+from random_generators import get_random_task, get_random_office_role, get_random_daytime
 
 
-class MetPoint(NonActionablePoint):
+class PositiveMetPoint(NonActionablePoint):
     @staticmethod
-    def init_point(is_male: bool) -> "MetPoint":
+    def init_point(is_male: bool) -> "PositiveMetPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} it was great meeting {pronoun}",
             f"tell {pronoun} you had a good catchup with {pronoun}",
             f"tell {pronoun} you appreciate to have met {pronoun}",
-            f"tell {pronoun} you regret meeting {pronoun}",
             f"tell {pronoun} getting to see {pronoun} was a good experience",
             f"tell {pronoun} you now know {pronoun} better",
             f"say you had a nice chat with {pronoun}",
             f"say the conversation with {pronoun} is great",
             f"say you want to keep in touch with {pronoun}",
-            f"say the talk with {pronoun} is bad",
             f"say you want to meet {pronoun} again as soon as possible",
-            f"say you do not want to meet {pronoun} again",
             f"thank {pronoun} for providing time for you",
             f"thank {pronoun} for not ignoring you",
-            f"thank {pronoun} for helping you during the catchup",
+            f"thank {pronoun} for helping you during the catchup"
+        ])
+        return PositiveMetPoint(
+            email_point=point
+        )
+
+class NegativeMetPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativeMetPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} you regret meeting {pronoun}",
+            f"say the talk with {pronoun} is bad",
+            f"say you do not want to meet {pronoun} again",
             f"scold {pronoun} for being unresponsive",
             f"scold {pronoun} for giving you a hard time",
             f"scold {pronoun} for wasting your time"
         ])
-        return MetPoint(
+        return NegativeMetPoint(
             email_point=point
         )
 
-
-class MeetPoint(NonActionablePoint):
+class PositiveMeetPoint(NonActionablePoint):
     @staticmethod
-    def init_point(is_male: bool) -> "MeetPoint":
+    def init_point(is_male: bool) -> "PositiveMeetPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
-            f"tell {pronoun} you have forgotten what happen during the meeting",
             f"tell {pronoun} you would like to meet again",
-            f"tell {pronoun} you did not attend the previous meeting",
-            f"tell {pronoun} now is not a good time for you to have meeting",
-            f"tell {pronoun} the meeting is cancelled",
-            f"tell {pronoun} you want to postpone the meeting",
             f"say the meeting with {pronoun} is going to happen soon",
             f"say you remember the previous meeting with {pronoun}",
-            f"say you need another time for the meeting with {pronoun}",
-            f"say you might not attend the meeting with {pronoun}",
             f"say the meeting with {pronoun} might include other people",
             f"say you want to add other topics for the meeting",
             f"thank {pronoun} for rescheduling the meeting",
             f"thank {pronoun} for having the meeting with you",
-            f"thank {pronoun} for able to be there for the meeting",
+            f"thank {pronoun} for able to be there for the meeting"
+        ])
+        return PositiveMeetPoint(
+            email_point=point
+        )
+
+class NegativeMeetPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativeMeetPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} you have forgotten what happen during the meeting",
+            f"tell {pronoun} you did not attend the previous meeting",
+            f"tell {pronoun} now is not a good time for you to have meeting",
+            f"tell {pronoun} the meeting is cancelled",
+            f"tell {pronoun} you want to postpone the meeting",
+            f"say you need another time for the meeting with {pronoun}",
+            f"say you might not attend the meeting with {pronoun}",
             f"scold {pronoun} for scheduling too many meetings",
             f"scold {pronoun} for meeting with another person instead of you",
             f"scold {pronoun} for not attending the meeting"
         ])
-        return MeetPoint(
+        return NegativeMeetPoint(
             email_point=point
         )
 
-
-class CallPoint(NonActionablePoint):
+class PositiveCallPoint(NonActionablePoint):
     @staticmethod
-    def init_point(is_male: bool) -> "PositivePoint":
+    def init_point(is_male: bool) -> "PositiveCallPoint":
         pronoun = "him" if is_male else "her"
-        time = random.choice(["morning", "afternoon", "evening"])
         point = random.choice([
             f"tell {pronoun} it was great call with {pronoun}",
             f"tell {pronoun} the call with {pronoun} is nice",
             f"tell {pronoun} the to be nice during the call",
-            f"tell {pronoun} to stop calling you",
-            f"tell {pronoun} to call you in the {time}",
-            f"tell {pronoun} that {time} is not a good time to call you",
-            f"say you miss the call from {pronoun} this {time}",
-            f"say you cannot receive call from {pronoun} in the {time}",
-            f"say you want call {pronoun}",
-            f"say the call from {pronoun} will always be ignored",
-            f"say you had a hard time on call with {pronoun}",
+            f"tell {pronoun} to call you in the {get_random_daytime()}",
+            f"say you want call {pronoun} later",
             f"say you need another call with {pronoun}",
             f"thank {pronoun} for the call this {time}",
             f"thank {pronoun} for not calling in the {time}",
-            f"thank {pronoun} for alerting you through a call",
+            f"thank {pronoun} for alerting you through a call
+        ])
+        return PositiveCallPoint(
+            email_point=point
+        )
+
+class NegativeCallPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativeCallPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} to stop calling you for no reason",
+            f"tell {pronoun} that {daytime} is not a good time to call you",
+            f"say you miss the call from {pronoun} this {get_random_daytime()}",
+            f"say you cannot receive call from {pronoun} in the {get_random_daytime()}",
+            f"say the call from {pronoun} will always be ignored",
+            f"say you had a hard time on call with {pronoun}",
             f"scold {pronoun} for calling you repeatedly",
             f"scold {pronoun} for not calling you",
             f"scold {pronoun} for calling the wrong phone number"
         ])
-        return CallPoint(
+        return NegativeCallPoint(
             email_point=point
         )
 
-
-class PlanPoint(NonActionablePoint):
+class PositivePlanPoint(NonActionablePoint):
     @staticmethod
-    def init_point(is_male: bool) -> "PlanPoint":
+    def init_point(is_male: bool) -> "PositivePlanPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} it was a great plan",
@@ -102,23 +128,34 @@ class PlanPoint(NonActionablePoint):
             f"tell {pronoun} you have a new plan",
             f"tell {pronoun} the plan need to be changed",
             f"tell {pronoun} to choose between the different plans",
-            f"tell {pronoun} the plan is going to fail",
             f"say you are more familiar with the restructuring planned for next Quarter",
             f"say you have plans for the current issues",
             f"say you need to meet with {pronoun} to discuss about the plan",
             f"say you planned to have different idea from {pronoun}",
-            f"say the plan from {pronoun} is not feasible",
             f"say you are undergoing the plan already",
             f"thank {pronoun} for understanding your plan",
             f"thank {pronoun} for following the plan",
-            f"thank {pronoun} for not forsaking the plan",
+            f"thank {pronoun} for not forsaking the plan"
+        ])
+        return PositivePlanPoint(
+            email_point=point
+        )
+
+class NegativePlanPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativePlanPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"tell {pronoun} the plan is going to fail",
+            f"say the plan from {pronoun} is not feasible",
             f"scold {pronoun} for having a different plan in mind",
             f"scold {pronoun} for not planning properly",
             f"scold {pronoun} for giving the plan away to other people"
         ])
-        return PlanPoint(
+        return NegativePlanPoint(
             email_point=point
         )
+
 class SoloIntroPoint(NonActionablePoint):
     @staticmethod
     def init_point(is_male: bool) -> "SoloIntroPoint":
@@ -161,10 +198,9 @@ class NegativeReviewPoint(NonActionablePoint):
             email_point=point
         )
 
-
-class MailPoint(NonActionablePoint):
+class PositiveMailPoint(NonActionablePoint):
     @staticmethod
-    def init_point(is_male: bool) -> "MailPoint":
+    def init_point(is_male: bool) -> "PositiveMailPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} the email from you is important",
@@ -177,19 +213,28 @@ class MailPoint(NonActionablePoint):
             f"say you need {pronoun} to forward the email to other people",
             f"say you want {pronoun} to be contactable through email",
             f"say you emailed {pronoun} important documents",
-            f"say you have too many email to scan through",
-            f"say you miss the email from {pronoun}",
             f"thank {pronoun} for reading your email",
             f"thank {pronoun} for emailing you the documents",
             f"thank {pronoun} for the quick respone to your email",
+        ])
+        return PositiveMailPoint(
+            email_point=point
+        )
+
+class NegativeMailPoint(NonActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "NegativeMailPoint":
+        pronoun = "him" if is_male else "her"
+        point = random.choice([
+            f"say you have too many email to scan through",
+            f"say you miss the email from {pronoun}",
             f"scold {pronoun} for missing too many emails",
             f"scold {pronoun} for emailing with an incorrect tone",
             f"scold {pronoun} for having to be reminded everytime to read email"
         ])
-        return MailPoint(
+        return NegativeMailPoint(
             email_point=point
         )
-
 
 class SchoolPoint(NonActionablePoint):
     @staticmethod
