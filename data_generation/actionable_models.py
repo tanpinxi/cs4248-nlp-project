@@ -1,7 +1,8 @@
 import random
 
 from data_generation.random_generators import get_random_room, get_random_time, get_random_day, \
-    get_random_meeting_platform, get_random_document, get_random_office_role, get_random_first_name
+    get_random_meeting_platform, get_random_document, get_random_office_role, get_random_first_name, \
+    get_random_meeting_topic 
 from data_generation.util_models import ActionablePoint
 
 # Scheduling 
@@ -51,6 +52,21 @@ class PostponeMeetingPoint(ActionablePoint):
         ])
         summarized_point = f"postpone the meeting scheduled for {day}"
         return PostponeMeetingPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+
+class ConfirmMeetingAgendaPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ConfirmMeetingAgendaPoint":
+        action = random.choice(["confirm", "check", "verify"])
+        day = random.choice([f"next {get_random_day()}",  f"this {get_random_day()}", "tomorrow", "today"])
+        topic = get_random_meeting_topic()
+        email_point = random.choice([
+            f"{action} that {day}'s meeting agenda is about {topic}",
+        ])
+        summarized_point = f"confirm that {day}'s meeting agenda is about {topic} "
+        return ConfirmMeetingAgendaPoint(
             email_point=email_point,
             summarized_point=summarized_point,
         )
@@ -107,3 +123,38 @@ class ForwardAttachmentPoint(ActionablePoint):
             summarized_point=summarized_point,
         )
         
+# Requests
+class RequestExtensionPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "RequestExtensionPoint":
+        action = random.choice(["extend", "postpone", "prolong"])
+        reason = random.choice(["recent physical injury", "recent mental ill-health", "personal reasons", "family emergency", "sick leave"])
+        document = get_random_document()
+        email_point = random.choice([
+            f"{action} deadline for submission of {document} due to {reason}",
+        ])
+        summarized_point = f"extend deadline for submission of {document} due to {reason}"
+        return RequestExtensionPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
+
+class ApproveRequestPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ApproveRequestPoint":
+        name = get_random_first_name()
+        action = random.choice(["approve", "allow", "accept", "endorse", "ratify", "validate"])
+        request = random.choice(["have work from home arrangement", 
+                                 "have hybrid work arrangement", 
+                                 "take medical leave", 
+                                 "extend deadline", 
+                                 "get more manpower", 
+                                 "get more resources"])
+        email_point = random.choice([
+            f"{action} {name}'s request to {request}",
+        ])
+        summarized_point = f"approve {name}'s request to {request}"
+        return ApproveRequestPoint(
+            email_point=email_point,
+            summarized_point=summarized_point,
+        )
