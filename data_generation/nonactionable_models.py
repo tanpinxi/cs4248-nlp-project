@@ -91,8 +91,8 @@ class PositiveCallPoint(NonActionablePoint):
             f"tell {pronoun} to call you in the {get_random_daytime()}",
             f"say you want call {pronoun} later",
             f"say you need another call with {pronoun}",
-            f"thank {pronoun} for the call this {time}",
-            f"thank {pronoun} for not calling in the {time}",
+            f"thank {pronoun} for the call this {get_random_daytime()}",
+            f"thank {pronoun} for not calling in the {get_random_daytime()}",
             f"thank {pronoun} for alerting you through a call",
         ])
         return PositiveCallPoint(
