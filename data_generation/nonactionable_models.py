@@ -93,7 +93,7 @@ class PositiveCallPoint(NonActionablePoint):
             f"say you need another call with {pronoun}",
             f"thank {pronoun} for the call this {time}",
             f"thank {pronoun} for not calling in the {time}",
-            f"thank {pronoun} for alerting you through a call
+            f"thank {pronoun} for alerting you through a call",
         ])
         return PositiveCallPoint(
             email_point=point
@@ -105,7 +105,7 @@ class NegativeCallPoint(NonActionablePoint):
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} to stop calling you for no reason",
-            f"tell {pronoun} that {daytime} is not a good time to call you",
+            f"tell {pronoun} that {get_random_daytime()} is not a good time to call you",
             f"say you miss the call from {pronoun} this {get_random_daytime()}",
             f"say you cannot receive call from {pronoun} in the {get_random_daytime()}",
             f"say the call from {pronoun} will always be ignored",
