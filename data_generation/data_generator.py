@@ -14,9 +14,12 @@ all_actionable_points: List[Type[ActionablePoint]] = [
     BookMeetingPoint,
     BookOnlineMeetingPoint,
     PostponeMeetingPoint,
+    ConfirmMeetingAgendaPoint,
     ReviewAttachmentPoint,
     CompleteAttachmentPoint,
     ForwardAttachmentPoint,
+    RequestExtensionPoint,
+    ApproveRequestPoint,
 ]
 
 all_nonactionable_points: List[Type[NonActionablePoint]] = [
