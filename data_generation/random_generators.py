@@ -83,6 +83,28 @@ def get_random_office_role():
         "client"
     ])
 
+def get_random_meeting_topic():
+    return random.choice([
+        "ongoing projects",
+        "recent performance",
+        "next quarter's goals",
+        "progress on quarterly goals",
+        "industry news",
+        "latest trends",
+        "upcoming events",
+        "upcoming company events",
+        "challenges",
+        "roadblocks",
+        "process updates",
+        "customer feedback",
+        "design review",
+        "product training",
+        "current strategy",
+        "backlog refinement",
+        "annual budget",
+        "budget"
+    ])
+
 def get_random_non_office_venue():
     return random.choice([
         "restaurant", 
