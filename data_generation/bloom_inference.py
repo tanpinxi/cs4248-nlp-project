@@ -1,6 +1,6 @@
 from huggingface_hub.inference_api import InferenceApi
 
-from data_generation.settings import HUGGINGFACE_API_KEY
+from settings import HUGGINGFACE_API_KEY
 
 
 def get_bloom_output(prompt: str) -> str:

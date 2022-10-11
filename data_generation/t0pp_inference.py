@@ -1,7 +1,6 @@
 import requests
-from huggingface_hub.inference_api import InferenceApi
 
-from data_generation.settings import HUGGINGFACE_API_KEY
+from settings import HUGGINGFACE_API_KEY
 
 
 API_URL = "https://api-inference.huggingface.co/models/bigscience/T0pp"
