@@ -7,7 +7,7 @@ from settings import OPENAI_API_KEY
 from finetuning.finetune_neptune import finetune_with_neptune_logging
 from finetuning.models import PromptCompletion, FineTuneParams
 
-data_file_path = "../data/email_summary_data.jsonl"
+data_file_path = "../data/lm_generated_data.jsonl"
 openai.api_key = OPENAI_API_KEY
 
 def get_training_data() -> List[PromptCompletion]:
