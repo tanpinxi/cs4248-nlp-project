@@ -215,7 +215,7 @@ class PositiveMailPoint(NonActionablePoint):
             f"say you emailed {pronoun} important documents",
             f"thank {pronoun} for reading your email",
             f"thank {pronoun} for emailing you the documents",
-            f"thank {pronoun} for the quick respone to your email",
+            f"thank {pronoun} for the quick response to your email",
         ])
         return PositiveMailPoint(
             email_point=point
@@ -253,7 +253,7 @@ class SchoolPoint(NonActionablePoint):
             f"say you are busy with school currently",
             f"say you do not know how to study",
             f"say the help in your study from {pronoun} is great",
-            f"thank {pronoun} for provinding a great learning experience",
+            f"thank {pronoun} for providing a great learning experience",
             f"thank {pronoun} for helping you in understanding the context",
             f"thank {pronoun} for studying with you",
             f"scold {pronoun} for ignoring you while you had helped {pronoun} before",
@@ -274,7 +274,7 @@ class ThankPoint(NonActionablePoint):
             f"thank {pronoun} for the help that {pronoun_3} provided in the recent {get_random_task()}",
             f"tell {pronoun} that {pronoun_2} assistance is greatly appreciated",
             f"tell {pronoun} to not hesitate to let you know if they need assistance in the future",
-            f"tell {pronoun} that you are greatful for the help",
+            f"tell {pronoun} that you are grateful for the help",
             f"thank {pronoun} for giving you the time of day",
             f"thank {pronoun} for such a wonderful contribution to the recent {get_random_task()}",
             f"thank {pronoun} putting a good word to the {get_random_office_role()}",

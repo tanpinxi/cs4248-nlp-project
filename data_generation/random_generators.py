@@ -57,6 +57,11 @@ def get_random_document():
         "business report",
         "report",
         "file",
+        "form",
+        "survey",
+        "spreadsheet",
+        "doc",
+        "document",
         "Word document",
         "Excel spreadsheet"
         "PDF document",
