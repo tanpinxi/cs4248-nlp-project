@@ -8,7 +8,7 @@ from data_generation.gpt_inference import get_gpt_output
 from data_generation.nonactionable_models import *
 from data_generation.util_models import ActionablePoint, NonActionablePoint, BasePoint
 
-data_file = "email_summary_data.jsonl"
+data_file = "../data/lm_generated_data.jsonl"
 
 all_actionable_points: List[Type[ActionablePoint]] = [
     BookMeetingPoint,

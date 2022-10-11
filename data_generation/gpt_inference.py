@@ -1,6 +1,6 @@
 import openai
 
-from data_generation.settings import OPENAI_API_KEY
+from settings import OPENAI_API_KEY
 
 openai.api_key = OPENAI_API_KEY
 

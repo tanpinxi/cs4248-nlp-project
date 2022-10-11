@@ -4,3 +4,5 @@ datasets~=2.5.1
 pydantic~=1.10.2
 openai~=0.23.1
 names~=0.3.0
+jsonlines~=3.1.0
+requests~=2.28.1
