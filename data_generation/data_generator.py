@@ -20,6 +20,10 @@ all_actionable_points: List[Type[ActionablePoint]] = [
     ForwardAttachmentPoint,
     RequestExtensionPoint,
     ApproveRequestPoint,
+    RequestUpdatePoint,
+    RequestResponsePoint,
+    FeedbackPoint,
+    ClarificationPoint
 ]
 
 all_nonactionable_points: List[Type[NonActionablePoint]] = [

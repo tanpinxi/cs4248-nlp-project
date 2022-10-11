@@ -1,3 +1,4 @@
+from argparse import Action
 import random
 
 from data_generation.random_generators import get_random_room, get_random_time, get_random_day, \
@@ -156,5 +157,71 @@ class ApproveRequestPoint(ActionablePoint):
         summarized_point = f"approve {name}'s request to {request}"
         return ApproveRequestPoint(
             email_point=email_point,
-            summarized_point=summarized_point,
+            summarized_point=summarized_point
+        )
+
+class RequestUpdatePoint(ActionablePoint):
+    @staticmethod
+    def init_opint(is_male: bool) -> "RequestUpdatePoint":
+        update = random.choice(["status", "progress"])
+        email_point = random.choice([
+            f"give me an update on the {update}",
+            f"let me know what is the {update}",
+            "let me know how things are going",
+            "provide me with an update on the {update}"
+        ])
+        summarized_point = f"give me an update"
+        return RequestUpdatePoint(
+            email_point=email_point,
+            summarized_point=summarized_point
+        )
+
+# Response
+class RequestResponsePoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "RequestResponsePoint":
+        action = random.choice(["reply to", "acknowledge"])
+        day = random.choice([f"next {get_random_day()}",  f"this {get_random_day()}", "tomorrow", "today"])
+        email_point = random.choice([
+            f"{action} this email by {day}",
+            f"look forward to hear from you by {day}",
+            f"give us a reply by {day}",
+            f"let us know that you have received the email by {day}"
+        ])
+        summarized_point = f"acknowledge this email by {day}"
+        return RequestResponsePoint(
+            email_point=email_point,
+            summarized_point=summarized_point
+        )
+
+class FeedbackPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "FeedbackPoint":
+        action = random.choice(["give", "tell"])
+        feedback = random.choice(["feedback", "opinion", "suggestions", "recommendations"])
+        email_point = random.choice([
+            "{action} us your {feedback}",
+            "tell us what you think"
+        ])
+        summarized_point = "give feedback"
+        return FeedbackPoint(
+            email_point=email_point,
+            summarized_point=summarized_point
+        )
+
+# Clarifications
+class ClarificationPoint(ActionablePoint):
+    @staticmethod
+    def init_point(is_male: bool) -> "ClarificationPoint":
+        action = random.choice(["explain", "clarify"])
+        action_with_preposition = random.choice(["shed some light", "give further explanations", "give more details"])
+        email_point = random.choice([
+            f"{action} this again",
+            f"{action_with_preposition} on this topic",
+            f"{action_with_preposition} about what you mean"
+        ])
+        summarized_point = "explain more about the topic"
+        return ClarificationPoint(
+            email_point=email_point,
+            summarized_point=summarized_point
         )
