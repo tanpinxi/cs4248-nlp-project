@@ -17,7 +17,6 @@ class PositiveMetPoint(NonActionablePoint):
             f"say you had a nice chat with {pronoun}",
             f"say the conversation with {pronoun} is great",
             f"say you want to keep in touch with {pronoun}",
-            f"say you want to meet {pronoun} again as soon as possible",
             f"thank {pronoun} for providing time for you",
             f"thank {pronoun} for not ignoring you",
             f"thank {pronoun} for helping you during the catchup"
@@ -47,11 +46,10 @@ class PositiveMeetPoint(NonActionablePoint):
     def init_point(is_male: bool) -> "PositiveMeetPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
-            f"tell {pronoun} you would like to meet again",
-            f"say the meeting with {pronoun} is going to happen soon",
-            f"say you remember the previous meeting with {pronoun}",
-            f"say the meeting with {pronoun} might include other people",
-            f"say you want to add other topics for the meeting",
+            f"say the meeting with {pronoun} was constructive",
+            f"say the meeting with {pronoun} was pleasant",
+            f"say you enjoyed the previous meeting with {pronoun}",
+            f"say that other people will be joining the meeting with {pronoun} later",
             f"thank {pronoun} for rescheduling the meeting",
             f"thank {pronoun} for having the meeting with you",
             f"thank {pronoun} for able to be there for the meeting"
@@ -65,16 +63,14 @@ class NegativeMeetPoint(NonActionablePoint):
     def init_point(is_male: bool) -> "NegativeMeetPoint":
         pronoun = "him" if is_male else "her"
         point = random.choice([
-            f"tell {pronoun} you have forgotten what happen during the meeting",
             f"tell {pronoun} you did not attend the previous meeting",
-            f"tell {pronoun} now is not a good time for you to have meeting",
             f"tell {pronoun} the meeting is cancelled",
-            f"tell {pronoun} you want to postpone the meeting",
-            f"say you need another time for the meeting with {pronoun}",
             f"say you might not attend the meeting with {pronoun}",
-            f"scold {pronoun} for scheduling too many meetings",
-            f"scold {pronoun} for meeting with another person instead of you",
-            f"scold {pronoun} for not attending the meeting"
+            f"say the meeting with {pronoun} was not constructive",
+            f"say the meeting with {pronoun} was not useful",
+            f"say the meeting with {pronoun} was unpleasant",
+            f"scold {pronoun} for not attending the meeting",
+            f"scold {pronoun} for missing the meeting",
         ])
         return NegativeMeetPoint(
             email_point=point
@@ -86,11 +82,9 @@ class PositiveCallPoint(NonActionablePoint):
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} it was great call with {pronoun}",
-            f"tell {pronoun} the call with {pronoun} is nice",
-            f"tell {pronoun} the to be nice during the call",
-            f"tell {pronoun} to call you in the {get_random_daytime()}",
-            f"say you want call {pronoun} later",
-            f"say you need another call with {pronoun}",
+            f"tell {pronoun} the call with {pronoun} was nice",
+            f"tell {pronoun} the call with {pronoun} was enjoyable",
+            f"tell {pronoun} that the call was pleasant",
             f"thank {pronoun} for the call this {get_random_daytime()}",
             f"thank {pronoun} for not calling in the {get_random_daytime()}",
             f"thank {pronoun} for alerting you through a call",
@@ -105,14 +99,12 @@ class NegativeCallPoint(NonActionablePoint):
         pronoun = "him" if is_male else "her"
         point = random.choice([
             f"tell {pronoun} to stop calling you for no reason",
+            f"tell {pronoun} that the call was unpleasant",
+            f"tell {pronoun} that the call was not enjoyable",
             f"tell {pronoun} that {get_random_daytime()} is not a good time to call you",
-            f"say you miss the call from {pronoun} this {get_random_daytime()}",
-            f"say you cannot receive call from {pronoun} in the {get_random_daytime()}",
-            f"say the call from {pronoun} will always be ignored",
+            f"say the call from {pronoun} will always be ignored from now on",
             f"say you had a hard time on call with {pronoun}",
             f"scold {pronoun} for calling you repeatedly",
-            f"scold {pronoun} for not calling you",
-            f"scold {pronoun} for calling the wrong phone number"
         ])
         return NegativeCallPoint(
             email_point=point
@@ -128,7 +120,6 @@ class PositivePlanPoint(NonActionablePoint):
             f"tell {pronoun} you have a new plan",
             f"tell {pronoun} the plan need to be changed",
             f"tell {pronoun} to choose between the different plans",
-            f"say you are more familiar with the restructuring planned for next Quarter",
             f"say you have plans for the current issues",
             f"say you need to meet with {pronoun} to discuss about the plan",
             f"say you planned to have different idea from {pronoun}",
@@ -148,8 +139,9 @@ class NegativePlanPoint(NonActionablePoint):
         point = random.choice([
             f"tell {pronoun} the plan is going to fail",
             f"say the plan from {pronoun} is not feasible",
+            f"say the plan from {pronoun} cannot be done due to time",
+            f"say the plan from {pronoun} cannot be done due to budget",
             f"scold {pronoun} for having a different plan in mind",
-            f"scold {pronoun} for not planning properly",
             f"scold {pronoun} for giving the plan away to other people"
         ])
         return NegativePlanPoint(
@@ -164,7 +156,7 @@ class SoloIntroPoint(NonActionablePoint):
         point = random.choice([
             f"tell {pronoun} that you are a new hire and have recently joined {pronoun_2} team",
             f"tell {pronoun} that you are looking forward to learning from {pronoun} and the rest of the team",
-            f"tell {pronoun} that you are looking forward to meeting the team members"
+            f"tell {pronoun} that you are looking forward to getting to know the team members"
             f"tell {pronoun} that you are hoping for a pleasant work experience with everyone"
         ])
         return SoloIntroPoint(
@@ -210,8 +202,6 @@ class PositiveMailPoint(NonActionablePoint):
             f"tell {pronoun} to converse with you through email",
             f"tell {pronoun} to read the email from you",
             f"say you are contactable through email",
-            f"say you need {pronoun} to forward the email to other people",
-            f"say you want {pronoun} to be contactable through email",
             f"say you emailed {pronoun} important documents",
             f"thank {pronoun} for reading your email",
             f"thank {pronoun} for emailing you the documents",
@@ -249,7 +239,6 @@ class SchoolPoint(NonActionablePoint):
             f"tell {pronoun} now is a good time for a study session",
             f"say you are good with the content",
             f"say you need more time to finish the assignment",
-            f"say you want to learn more from {pronoun}",
             f"say you are busy with school currently",
             f"say you do not know how to study",
             f"say the help in your study from {pronoun} is great",
@@ -278,7 +267,7 @@ class ThankPoint(NonActionablePoint):
             f"thank {pronoun} for giving you the time of day",
             f"thank {pronoun} for such a wonderful contribution to the recent {get_random_task()}",
             f"thank {pronoun} putting a good word to the {get_random_office_role()}",
-            f"Show your gratitude to {pronoun} by offering your assistance to his current job",
+            f"show your gratitude to {pronoun} by offering your assistance to his current job",
             f"thank {pronoun} for {pronoun_2} service",
             f"thank {pronoun} for {pronoun_2} application to the role",
             f"thank {pronoun} for reading the email and for {pronoun} to have a great day ahead"

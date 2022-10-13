@@ -9,7 +9,7 @@ def get_gpt_output(prompt: str) -> str:
     res = openai.Completion.create(
         model="text-davinci-002",
         prompt=prompt,
-        max_tokens=400,
+        max_tokens=600,
         temperature=1,
     )
     return res["choices"][0]["text"].strip()
