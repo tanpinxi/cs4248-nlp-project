@@ -53,7 +53,7 @@ def finetune_with_neptune_logging(
 
     try:
         run = neptune.new.init(
-            project=f"leadiq/{project_name}",
+            project=project_name,
             api_token=NEPTUNE_KEY,
         )
 

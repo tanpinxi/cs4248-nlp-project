@@ -54,7 +54,7 @@ def await_finetune_job(job_id: JobId) -> ModelId:
         if status == FinetuneStates.running and not_started:
             not_started = False
             print("Finetune started...")  # When we finally queue finish
-        elif status != FinetuneStates.pending or status != FinetuneStates.running:
+        elif status != FinetuneStates.pending and status != FinetuneStates.running:
             raise RuntimeError(f"Finetune {job_response} failed with status {status}.")
         time.sleep(10)
 

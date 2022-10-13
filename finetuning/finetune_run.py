@@ -15,9 +15,11 @@ def get_training_data() -> List[PromptCompletion]:
     data: List[PromptCompletion] = []
     with jsonlines.open(data_file_path, "r") as reader:
         for item in reader:
+            prompt = item["email"].strip()
+            completion = item["summary"].strip() or "NONE"
             prompt_completion = PromptCompletion(
-                prompt=item["email"].strip() + "\n\n===\n\n",
-                completion=item["summary"].strip() + "\nEND",
+                prompt=prompt + "\n\n===\n\n",
+                completion=completion + "\nEND",
             )
             data.append(prompt_completion)
     print(f"Found {len(data)} data points.")

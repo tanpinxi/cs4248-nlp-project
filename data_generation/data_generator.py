@@ -74,7 +74,7 @@ Email:
 """
     summarized_points = (
         "\n".join(["- " + x.summarized_point for x in points if isinstance(x, ActionablePoint)])
-        if len(points) > 0
+        if len(actionable_points) > 0
         else "NONE"
     )
     return prompt, summarized_points
