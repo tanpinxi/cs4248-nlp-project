@@ -1,7 +1,7 @@
 import random
 
 from data_generation.util_models import NonActionablePoint
-from random_generators import get_random_task, get_random_office_role, get_random_daytime
+from data_generation.random_generators import get_random_task, get_random_office_role, get_random_daytime
 
 
 class PositiveMetPoint(NonActionablePoint):
