@@ -79,10 +79,12 @@ def finetune_with_neptune_logging(
             for k, v in item.dict().items():
                 run[k].log(v)
 
-        run["events"] = result.events.map(lambda x: x.dict())
-        run["cost"] = (
-            result.events.map(lambda x: x.extract_cost()).flatten_option().first_option
-        )
+        run["events"] = [x.dict() for x in result.events]
+        for x in result.events:
+            cost = x.extract_cost()
+            if cost:
+                run["cost"] = cost
+                break
         run["final_parameters"] = result.final_params
         return model_id
 
