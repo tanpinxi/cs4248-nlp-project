@@ -23,6 +23,7 @@ def write_training_data(
 def finetune_with_neptune_logging(
     train_data: List[PromptCompletion],
     params: FineTuneParams,
+    workspace_name: str,
     project_name: str,
 ) -> ModelId:
     # Take and train from a sample of the dataset
@@ -51,9 +52,10 @@ def finetune_with_neptune_logging(
         else:
             print("Invalid input")
 
+    run = None
     try:
         run = neptune.new.init(
-            project=project_name,
+            project=f"{workspace_name}/{project_name}",
             api_token=NEPTUNE_KEY,
         )
 
@@ -89,5 +91,6 @@ def finetune_with_neptune_logging(
         return model_id
 
     finally:
-        print("Access run information at", run.get_run_url())
-        run.stop()
+        if run:
+            print("Access run information at", run.get_run_url())
+            run.stop()
