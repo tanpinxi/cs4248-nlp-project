@@ -181,7 +181,7 @@ class ApproveRequestPoint(ActionablePoint):
             "have work from home arrangement",
             "have hybrid work arrangement",
             "take medical leave",
-            "go on medical leave"
+            "go on medical leave",
             "extend deadline",
             "get more manpower",
             "get more resources",
