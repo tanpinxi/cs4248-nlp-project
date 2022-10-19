@@ -16,7 +16,7 @@ if __name__ == "__main__":
             email += line
 
     d = {}
-    d["email"] = email
+    d["email"] = email[:len(email) - 1]
     d["summary"] = summary 
     text = json.dumps(d, indent = None)
 
