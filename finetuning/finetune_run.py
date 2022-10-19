@@ -27,10 +27,11 @@ def get_training_data() -> List[PromptCompletion]:
 
 if __name__ == "__main__":
     # Finetuning parameters, change if desired
-    model_name = "babbage"
+    model_name = "curie"
     num_epoch = 2
     learning_rate_multiplier = 0.1
-    neptune_project = "pinxi-tan/cs4248"
+    neptune_work_space = "pinxi-tan"
+    neptune_project = "cs4248"
 
     data = get_training_data()
 
@@ -41,5 +42,6 @@ if __name__ == "__main__":
             n_epochs=num_epoch,
             learning_rate_multiplier=learning_rate_multiplier
         ),
+        workspace_name=neptune_work_space,
         project_name=neptune_project,
     )
