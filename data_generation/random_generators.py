@@ -63,7 +63,7 @@ def get_random_document():
         "doc",
         "document",
         "Word document",
-        "Excel spreadsheet"
+        "Excel spreadsheet",
         "PDF document",
         "schedule",
         "invoice",
