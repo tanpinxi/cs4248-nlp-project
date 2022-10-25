@@ -1,9 +1,9 @@
+import json
 from typing import List, Union, Tuple
 
 import openai
 
 from settings import OPENAI_API_KEY
-
 
 def get_gpt_logprobs(input: str, model: str) -> Tuple[float, int]:
     res = openai.Completion.create(
@@ -31,14 +31,15 @@ def get_gpt_logprobs(input: str, model: str) -> Tuple[float, int]:
             break
     return completion_logprob, completion_tokens
 
-def calc_gpt_logprobs(data: List[str], model: str) -> Tuple[float, int]:
-    total_logprob = 0.0
-    total_tokens = 0
+def calc_gpt_logprobs(data: List[str], model: str) -> float:
+    running_average_logprob = 0.0
     for x in data:
         logprob, tokens = get_gpt_logprobs(x, model)
-        total_logprob += logprob
-        total_tokens += tokens
-    return total_logprob, total_tokens
+        running_average_logprob += logprob / tokens
+    return running_average_logprob / len(data)
+
+def create_prompt(email: str, summary: str) -> str:
+    return email.strip() + "\n\n===\n\n" + summary.strip() + "\nEND"
 
 if __name__ == "__main__":
     openai.api_key = OPENAI_API_KEY
@@ -48,11 +49,12 @@ if __name__ == "__main__":
         "curie:ft-personal:cs4248-2022-10-15-07-01-21",
     ]
 
-    data = ...
+    with open("data/handwritten_data.jsonl", "r") as f:
+        json_data = list(map(json.loads, f))
+    data = [create_prompt(email=x["email"], summary=x["summary"]) for x in json_data]
 
     for model in model_names:
-        logprob, tokens = calc_gpt_logprobs(data=data, model=model)
+        logprob = calc_gpt_logprobs(data=data, model=model)
         print("========")
         print(model)
-        print("Total Log Prob:", round(logprob, 6))
-        print("Average Log Prob:", round(logprob / tokens, 6))
+        print("Average Log Prob:", round(logprob, 6))
