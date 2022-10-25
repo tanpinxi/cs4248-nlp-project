@@ -1,0 +1,37 @@
+Conclusion: good, best model for Bloom 1b7
+
+Optimizer: AdamW
+Scheduler: WarmupDecayLR
+
+output_dir=model_save_path,
+num_train_epochs=2,
+learning_rate=1e-4,
+per_device_train_batch_size=4,
+gradient_accumulation_steps=4,
+weight_decay=1e-3,
+warmup_ratio=0.1,
+deepspeed=ds_config,
+evaluation_strategy="steps",
+save_strategy="epoch",
+logging_steps=25,
+eval_steps=25,
+
+Step, Training Loss, Validation Loss
+25, 2.022200, 1.646748
+50, 1.606000, 1.558760
+75, 1.551900, 1.492738
+100, 1.527000, 1.490860
+125, 1.487900, 1.437143
+150, 1.413600, 1.443047
+175, 1.422100, 1.400741
+200, 1.379400, 1.355497
+225, 1.365600, 1.365960
+250, 1.080300, 1.343960
+275, 1.019100, 1.341124
+300, 1.048900, 1.320285
+325, 1.026900, 1.296799
+350, 1.001600, 1.281534
+375, 0.958300, 1.279850
+400, 0.953900, 1.249182
+425, 0.941800, 1.233956
+450, 0.936500, 1.230658

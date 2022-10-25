@@ -1,0 +1,36 @@
+Conclusion: good, try with more epochs
+
+Optimizer: AdamW
+Scheduler: WarmupDecayLR
+
+output_dir=model_save_path,
+num_train_epochs=2,
+learning_rate=1e-4,
+per_device_train_batch_size=16,
+weight_decay=1e-3,
+warmup_ratio=0.2,
+deepspeed=ds_config,
+evaluation_strategy="steps",
+save_strategy="epoch",
+logging_steps=25,
+eval_steps=25,
+
+Step, Training Loss, Validation Loss
+25, 2.307200, 1.843949
+50, 1.784100, 1.718783
+75, 1.711600, 1.667337
+100, 1.613900, 1.621920
+125, 1.643300, 1.591156
+150, 1.617100, 1.585154
+175, 1.564500, 1.556626
+200, 1.476500, 1.461677
+225, 1.461500, 1.415761
+250, 1.245800, 1.397248
+275, 1.137900, 1.397280
+300, 1.133800, 1.348223
+325, 1.146200, 1.330316
+350, 1.097700, 1.312647
+375, 1.083700, 1.300124
+400, 1.063000, 1.274368
+425, 1.033000, 1.267779
+450, 1.021900, 1.260592
