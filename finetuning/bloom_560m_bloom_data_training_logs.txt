@@ -1,0 +1,34 @@
+Optimizer: AdamW
+Scheduler: WarmupDecayLR
+
+output_dir=model_save_path,
+num_train_epochs=2,
+learning_rate=1e-4,
+per_device_train_batch_size=16,
+weight_decay=1e-3,
+warmup_ratio=0.2,
+deepspeed=ds_config,
+evaluation_strategy="steps",
+save_strategy="epoch",
+logging_steps=25,
+eval_steps=25,
+
+Step, Training Loss, Validation Loss
+25, 2.182700, 1.784861
+50, 1.729400, 1.692159
+75, 1.678300, 1.664878
+100, 1.732600, 1.708930
+125, 1.671600, 1.604338
+150, 1.591300, 1.569920
+175, 1.522600, 1.547849
+200, 1.538700, 1.510921
+225, 1.476000, 1.477701
+250, 1.242200, 1.486169
+275, 1.213800, 1.468271
+300, 1.229500, 1.446971
+325, 1.209100, 1.424957
+350, 1.171100, 1.406524
+375, 1.131000, 1.401446
+400, 1.142700, 1.381608
+425, 1.114500, 1.370855
+450, 1.147700, 1.362952

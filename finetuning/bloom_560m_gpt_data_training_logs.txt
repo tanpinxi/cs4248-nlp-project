@@ -1,5 +1,3 @@
-Conclusion: good, try with more epochs
-
 Optimizer: AdamW
 Scheduler: WarmupDecayLR
 

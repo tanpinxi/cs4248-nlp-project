@@ -1,5 +1,3 @@
-Conclusion: good, best model for Bloom 1b7
-
 Optimizer: AdamW
 Scheduler: WarmupDecayLR
 
