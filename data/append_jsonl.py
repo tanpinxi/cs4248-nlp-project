@@ -20,5 +20,5 @@ if __name__ == "__main__":
     d["summary"] = summary 
     text = json.dumps(d, indent = None)
 
-    with open("data/mingann.jsonl" , "a" ) as f:
+    with open("" , "a" ) as f:
         f.write(text + "\n")
