@@ -26,3 +26,7 @@ Run the Jupyter Notebook finetuning/bloom_finetune.ipynb found inside the finetu
 ### 4. Run evaluation script
 
 Run the Jupyter Notebook evaluation/bloom_loss.ipynb found inside the evaluation folder.
+
+## Contributors
+
+Tan Pinxi, Tan Xi Zhe, Tan Ming Ann, Lim Yu Yang, Ng Boon Hong
