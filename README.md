@@ -6,7 +6,7 @@ This repo details the work done for the module project of NUS CS4248 Natural Lan
 
 This codebase trains a language model to extract a list of actionable points from a given email, using an original email dataset generated using data inversion. 
 
-## How to run
+## Training Procedure
 
 ### 1. Setup
 
@@ -16,7 +16,10 @@ Install the project dependencies.
 pip install -r requirements.txt
 ```
 
-### 2. Data Generation
+Add your API keys in `settings.py` or through env variables. 
+
+### 2. Generate Data
+
 We generate the original email dataset by prompting another pretrained language model with self-crafted actionable and non-actionable points to write an email. The datapoints are then inverted to create an email-to-actionable points dataset. 
 
 Data generation script handles all possible ways to generate data:
@@ -38,12 +41,18 @@ bloom_generated_data.jsonl
 handwritten_data.jsonl
 ```
 
-### 3. Finetune bloom
+### 3. Finetune Bloom Models
 
 Finetuning was done from a Jupyter notebook: 
 ```
 finetuning/bloom_finetune.ipynb
 ```
+
+DeepSpeed config we used for finetuning can be found and modified in:
+```
+finetuning/ds_config_zero2.json
+```
+
 
 ### 4. Run evaluation script
 
