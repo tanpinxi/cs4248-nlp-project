@@ -6,7 +6,23 @@ This repo details the work done for the module project of NUS CS4248 Natural Lan
 
 This codebase trains a language model to extract a list of actionable points from a given email, using an original email dataset generated using data inversion. 
 
-## Training Procedure
+## Models
+
+All finetuned models are available on HuggingFace Hub, and can be accessed through the following links:
+
+Bloom-560m finetuned on InstructGPT3 data: </br>
+https://huggingface.co/pinxi/bloom-560m-igpt3
+
+Bloom-560m finetuned on Bloom data: </br>
+https://huggingface.co/pinxi/bloom-560m-bloom
+
+Bloom-1b7 finetuned on InstructGPT3 data: </br>
+https://huggingface.co/pinxi/bloom-1b7-igpt3
+
+Bloom-1b7 finetuned on Bloom data: </br>
+https://huggingface.co/pinxi/bloom-1b7-bloom
+
+## Codebase
 
 ### 1. Setup
 
@@ -60,23 +76,6 @@ Evaluation was done from a Jupyter notebook:
 ```
 finetuning/bloom_loss.ipynb
 ```
-
-### 5. Models
-
-The models used are uploaded on the HuggingFace Hub, and can be accessed using the following links:
-
-# bloom-560m instructgpt3 data
-https://huggingface.co/pinxi/bloom-560m-igpt3
-
-# bloom-560m bloom data
-https://huggingface.co/pinxi/bloom-560m-bloom
-
-# bloom-1b7 instructgpt3 data
-https://huggingface.co/pinxi/bloom-1b7-igpt3
-
-# bloom-1b7 bloom data
-https://huggingface.co/pinxi/bloom-1b7-bloom
-
 
 ## Contributors
 
