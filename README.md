@@ -1,10 +1,10 @@
-# cs4248-nlp-project
+# Email Actionable Points Extraction
+
+This repo details the work done for the module project of NUS CS4248 Natural Language Processing. 
 
 ## Overview
 
 This codebase trains a language model to extract a list of actionable points from a given email, using an original email dataset generated using data inversion. 
- are used with pretrained language models to generate the dataset.
-The language model is then evaluated with our handwritten dataset.
 
 ## How to run
 
