@@ -61,6 +61,23 @@ Evaluation was done from a Jupyter notebook:
 finetuning/bloom_loss.ipynb
 ```
 
+### 5. Models
+
+The models used are uploaded on the HuggingFace Hub, and can be accessed using the following links:
+
+# bloom-560m instructgpt3 data
+https://huggingface.co/pinxi/bloom-560m-igpt3
+
+# bloom-560m bloom data
+https://huggingface.co/pinxi/bloom-560m-bloom
+
+# bloom-1b7 instructgpt3 data
+https://huggingface.co/pinxi/bloom-1b7-igpt3
+
+# bloom-1b7 bloom data
+https://huggingface.co/pinxi/bloom-1b7-bloom
+
+
 ## Contributors
 
 Tan Pinxi, Tan Xi Zhe, Tan Ming Ann, Lim Yu Yang, Ng Boon Hong
